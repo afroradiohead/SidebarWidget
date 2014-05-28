@@ -3,7 +3,8 @@
     var pluginName = "sidebarWidget",
         defaults = {
             wrapperClass: "sidebarWrapper",
-            childToggleClass: "child-toggle"
+            childToggleClass: "child-toggle",
+            backClass:"back"
         };
 
     // The actual plugin constructor
@@ -23,11 +24,8 @@
         	this.pushContainer = this._getPushContainer();
 
         	this._setPosition();
+        	this._addBackLinks();
         	this._createEvents();
-
-        	this.element.find("ul ul").each(function(){
-        		$(this).prepend("<li> <a href='#'>Back</a></li>");
-        	});
         },
         resetPosition: function() {
         	this._setPosition();
@@ -51,6 +49,12 @@
         closeListItem:function(li){
         	li.removeClass('open');
         	li.parent("ul").removeClass("child-open");
+        },
+        _addBackLinks: function() {
+        	var $this = this;
+        	this.element.find("ul ul").each(function(){
+        		$(this).prepend("<li class='"+$this.options.backClass+"'> <a href='#'>Back</a></li>");
+        	});
         },
         _setPosition: function() {
         	this.element.css("left", this.pushContainer.offset().left - this.element.width());
@@ -80,8 +84,18 @@
         		$this.resetPosition();
         	});
 
-        	this.element.on("click", "."+this.options.childToggleClass, function() { //when child-toggle is clicked
-        		$this.openListItem($(this).parents("li:first")); //open parent li
+			//when child-toggle is clicked
+        	this.element.on("click", "."+this.options.childToggleClass, function() { 
+        		$this.openListItem($(this).parents("li:first")); //open parent list
+        	});
+
+        	//when back link is clicked
+        	this.element.on("click", "."+this.options.backClass+" a", function(e) { 
+        		e.preventDefault();
+
+        		$this.closeListItem($(this).parents("li.open:first")); //close parent list
+
+        		return false;
         	});
         }
     };

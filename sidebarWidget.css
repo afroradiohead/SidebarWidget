@@ -60,3 +60,8 @@
 	float:right;
 	cursor:pointer;
 }
+
+.sidebarWidget .sidebarWrapper li.back {
+	border-bottom:1px solid silver;
+	font-size:120%;
+}
