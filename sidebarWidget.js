@@ -21,7 +21,7 @@
     Plugin.prototype = {
         init: function() {
         	this.wrapper = this._generateWrapper();
-            this.parentContainer = this.element.parent();
+            this.parentContainer = this.element.parent().addClass("sidebar-widget-parent");
 
             this._setPositions();
         	this._addBackLinks();
@@ -70,6 +70,8 @@
             var parentContainerPaddingLeft = this.element.hasClass("open") 
                 && parentContainerHasNoRoomForWidth 
                 ? thisWidth : 0;
+
+            this.parentContainer.toggleClass('sidebar-widget-will-push', parentContainerHasNoRoomForWidth)
 
             this.element.css("left", parentContainerPaddingLeft - thisWidth);
             this.element.parent().css("padding-left", parentContainerPaddingLeft);
