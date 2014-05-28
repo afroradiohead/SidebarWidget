@@ -38,9 +38,11 @@
         },
         openSidebar: function() {
         	this.element.addClass("open");
+            this._setPosition();
         },
         closeSidebar: function() {
         	this.element.removeClass("open");
+            this._setPosition();
         },
         openListItem:function(li){
         	li.addClass('open');
@@ -70,10 +72,10 @@
         _setPushContainerPosition: function(sidebarLeftPosition) {
         	var pushContainerPosition = 0;
 
-        	// if(this.element.hasClass("open") && sidebarLeftPosition < 0)
-	        // 	this.pushContainer.css("padding-left", this.element.width());
-	        // else
-	        // 	this.pushContainer.css("padding-left", null);
+        	if(this.element.hasClass("open") && sidebarLeftPosition < 0)
+	        	pushContainerPosition = 0 - sidebarLeftPosition;
+
+	       	this.pushContainer.css("padding-left", pushContainerPosition);
         },
         _generateWrapper: function() {
         	var wrapper = this.element.children("."+this.options.wrapperClass+":first");
@@ -99,10 +101,7 @@
         	var resizeTimeoutId;
         	$(window).on("resize", function() {
         		clearTimeout(resizeTimeoutId);
-        		resizeTimeoutId = setTimeout(function(){
-					$this.resetPosition();
-        		}, 1);
-        		
+        		$this.resetPosition();
         	});
 
 			//when child-toggle is clicked
@@ -134,5 +133,5 @@
 })( jQuery, window, document );
 
 jQuery(document).ready(function($){
-	$(".sidebarWidget").sidebarWidget();
+	$(".sidebar-widget").sidebarWidget();
 });
