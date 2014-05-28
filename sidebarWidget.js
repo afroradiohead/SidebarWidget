@@ -2,7 +2,7 @@
 
     var pluginName = "sidebarWidget",
         defaults = {
-            wrapperClass: "sidebarWrapper",
+            wrapperClass: "sidebar-wrapper",
             childToggleClass: "child-toggle",
             backClass:"back"
         };
@@ -21,14 +21,14 @@
     Plugin.prototype = {
         init: function() {
         	this.wrapper = this._generateWrapper();
-        	this.pushContainer = this._getPushContainer();
+            this.parentContainer = this.element.parent();
 
-        	this._setPosition();
+            this._setPositions();
         	this._addBackLinks();
         	this._createEvents();
         },
         resetPosition: function() {
-        	this._setPosition();
+        	this._setPositions();
         },
         toggleSidebar: function() {
         	if(this.element.hasClass("open"))
@@ -38,11 +38,11 @@
         },
         openSidebar: function() {
         	this.element.addClass("open");
-            this._setPosition();
+            this._setPositions();
         },
         closeSidebar: function() {
         	this.element.removeClass("open");
-            this._setPosition();
+            this._setPositions();
         },
         openListItem:function(li){
         	li.addClass('open');
@@ -59,23 +59,16 @@
         		$(this).prepend("<li class='"+$this.options.backClass+"'> <a href='#'>Back</a></li>");
         	});
         },
-        _setPosition: function() {
-        	var sidebarLeftPosition = this.pushContainer.offset().left - this.element.width();
-        	var renderedSidebarLeftPosition = sidebarLeftPosition;
+        _setPositions: function() {
+            var thisWidth = this.element.width();
+            var parentContainerOffsetLeft = this.parentContainer.offset().left;
+            var parentContainerHasNoRoomForWidth = parentContainerOffsetLeft < thisWidth;
+            var parentContainerPaddingLeft = this.element.hasClass("open") 
+                && parentContainerHasNoRoomForWidth 
+                ? thisWidth : 0;
 
-        	if(renderedSidebarLeftPosition < 0)
-        		renderedSidebarLeftPosition = 0;
-
-        	this._setPushContainerPosition(sidebarLeftPosition);
-        	this.element.css("left", renderedSidebarLeftPosition);
-        },
-        _setPushContainerPosition: function(sidebarLeftPosition) {
-        	var pushContainerPosition = 0;
-
-        	if(this.element.hasClass("open") && sidebarLeftPosition < 0)
-	        	pushContainerPosition = 0 - sidebarLeftPosition;
-
-	       	this.pushContainer.css("padding-left", pushContainerPosition);
+            this.element.css("left", parentContainerPaddingLeft - thisWidth);
+            this.element.parent().css("padding-left", parentContainerPaddingLeft);
         },
         _generateWrapper: function() {
         	var wrapper = this.element.children("."+this.options.wrapperClass+":first");
@@ -86,9 +79,6 @@
             }
 
             return wrapper;
-        },
-        _getPushContainer: function() {
-        	return $(this.element.attr("pushContainer"));
         },
         _createEvents : function() {
         	var $this = this;
@@ -101,7 +91,9 @@
         	var resizeTimeoutId;
         	$(window).on("resize", function() {
         		clearTimeout(resizeTimeoutId);
-        		$this.resetPosition();
+                resizeTimeoutId = setTimeout(function(){
+                    $this.resetPosition();
+                }, 20)     		
         	});
 
 			//when child-toggle is clicked

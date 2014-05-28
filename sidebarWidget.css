@@ -1,5 +1,6 @@
 .sidebar-widget {
 	height:100%;
+	min-height:500px;
 	width:200px;
 	position:absolute;
 	overflow:hidden;
@@ -10,7 +11,7 @@
 	pointer-events:auto;
 }
 
-.sidebar-widget .sidebarWrapper {
+.sidebar-widget .sidebar-wrapper {
 	position: absolute; 
 	left: 100%;
 	-webkit-transition: left .5s ease-out; /* For Safari 3.1 to 6.0 */
@@ -19,24 +20,24 @@
 	height: 100%;
 }
 
-.sidebar-widget .sidebarWrapper nav{
+.sidebar-widget .sidebar-wrapper nav{
 }
 
-.sidebar-widget.open .sidebarWrapper {
+.sidebar-widget.open .sidebar-wrapper {
 	left: 0;
 }
 
-.sidebar-widget .sidebarWrapper ul {
+.sidebar-widget .sidebar-wrapper ul {
 	list-style: none;
 	background-color:#EE7624;
 	width: 100%;
 } 
 
-.sidebar-widget .sidebarWrapper ul a {
+.sidebar-widget .sidebar-wrapper ul a {
 	color:white;
 }
 
-.sidebar-widget .sidebarWrapper li ul {
+.sidebar-widget .sidebar-wrapper li ul {
 	width:100%;
 	position: absolute;
 	top: 0;
@@ -45,19 +46,19 @@
 	transition: left .5s ease-out;
 }
 
-.sidebar-widget .sidebarWrapper li.open > ul {
+.sidebar-widget .sidebar-wrapper li.open > ul {
 	left: 0;
 }
 
-.sidebar-widget .sidebarWrapper ul.child-open > li:not(.open){
+.sidebar-widget .sidebar-wrapper ul.child-open > li:not(.open){
 	display: none;
 }
 
-.sidebar-widget .sidebarWrapper ul.child-open > li.open > *:not(ul){
+.sidebar-widget .sidebar-wrapper ul.child-open > li.open > *:not(ul){
 	display: none;
 }
 
-.sidebar-widget .sidebarWrapper ul .child-toggle {
+.sidebar-widget .sidebar-wrapper ul .child-toggle {
 	width:20px;
 	height:15px;
 	background-color:black;
@@ -65,7 +66,7 @@
 	cursor:pointer;
 }
 
-.sidebar-widget .sidebarWrapper li.back {
+.sidebar-widget .sidebar-wrapper li.back {
 	border-bottom:1px solid silver;
 	font-size:120%;
 }
