@@ -52,12 +52,27 @@
         },
         _addBackLinks: function() {
         	var $this = this;
+
         	this.element.find("ul ul").each(function(){
         		$(this).prepend("<li class='"+$this.options.backClass+"'> <a href='#'>Back</a></li>");
         	});
         },
         _setPosition: function() {
-        	this.element.css("left", this.pushContainer.offset().left - this.element.width());
+        	var sidebarRenderedPosition = 0;
+        	this.sidebarLeftPosition = this.pushContainer.offset().left - this.element.width();
+
+        	if(this.sidebarLeftPosition > 0)
+        		sidebarRenderedPosition = this.sidebarLeftPosition
+        	
+        	this.element.css("left", sidebarRenderedPosition);
+
+        	this._setPushContainer();
+        },
+        _setPushContainer: function() {
+
+        	this.pushContainer.css("left", 100);
+
+        	this.pushContainer.css("position", "relative");
         },
         _generateWrapper: function() {
         	var wrapper = this.element.children("."+this.options.wrapperClass+":first");

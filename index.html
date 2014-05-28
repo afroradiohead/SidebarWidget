@@ -1,33 +1,389 @@
-<html>
-<head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src="sidebarWidget.js"></script>
-</head>
-<style>
-	body{margin:0;}
-	#navigation, #footer {background-color:black; height:50px; width:100%; color:white;}
-	#header {background-color:silver; height:100px; width:100%;}
-	#footer {background-color:black; height:50px;}
-</style>
-<body>
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>www One Column</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="www%20One%20Column_files/main.css" rel="stylesheet" type="text/css" media="all">
+	<link href="sidebarWidget.css" rel="stylesheet" type="text/css" media="all">
+
+
+	<script src="www%20One%20Column_files/jquery.js"></script>
+	<script type="text/javascript" src="sideBarWidget.js"></script>
+
 	
-	<div id="navigation">Navigation</div>
-	<div id="header">Header</div>
+</head>
+<body class="sticky">
+	
 
-	<div id="content">
-		<div class="dummyText">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sagittis urna odio, non ultricies nisi pellentesque non. Sed ut tempus dolor. Aliquam sit amet mauris auctor, egestas dolor eu, imperdiet sapien. Curabitur dictum magna eget felis tempor suscipit. Fusce congue vestibulum luctus. Aliquam erat volutpat. Donec tempus est a feugiat lobortis. Integer vel diam id justo mollis euismod. Maecenas ligula libero, vulputate eget augue sit amet, facilisis volutpat metus. Nulla posuere accumsan mi, non pellentesque dolor volutpat vel.</p>
+	<header></header>
 
-			<p>Duis magna dolor, aliquet posuere pellentesque nec, tristique ac nisl. Morbi mauris ligula, congue sit amet erat elementum, ornare lacinia magna. Duis feugiat orci in semper mollis. Nulla posuere odio facilisis, commodo sem eget, viverra lectus. Nam ornare, ante vitae ultricies iaculis, risus nunc pharetra ligula, nec suscipit dolor leo a tellus. Etiam eget suscipit risus, sed pellentesque libero. Nullam pulvinar elit non diam mollis commodo. Ut rhoncus tortor ac mauris porttitor, vel lacinia sapien ornare. Mauris consequat posuere lorem, in ultricies tellus mattis suscipit. Sed sit amet mi tincidunt, aliquam quam et, ultrices leo. Integer nibh turpis, adipiscing sed laoreet vel, vulputate eget leo. Phasellus pharetra magna non elit blandit, et fringilla tortor porta. Duis pretium nisl eu iaculis viverra. Pellentesque id augue scelerisque, sodales ligula et, pellentesque mauris. Fusce et blandit mauris, ullamcorper scelerisque lacus.</p>
+	
+	<div id="mainnav">
+		<div class="mainnav-wrapper">
 
-			<p>Quisque venenatis felis arcu, vel mattis metus fringilla ut. Pellentesque ultrices ipsum non ipsum tristique, nec mattis ipsum ornare. Nam sed diam eros. Ut euismod commodo ligula, vel viverra lectus aliquam a. Integer eros diam, dapibus iaculis enim ac, auctor consectetur velit. Quisque a nunc interdum, scelerisque ante nec, malesuada mi. Etiam ullamcorper lacus et erat venenatis dapibus quis eu mauris. Sed pharetra porttitor nunc, nec sagittis eros tincidunt non. Maecenas accumsan non magna vel vulputate. Fusce quis mauris vel massa tempus adipiscing eu ac elit. Nam purus ante, varius et metus in, tempus lacinia dolor. Vestibulum varius et eros vel congue. Fusce egestas, leo a malesuada facilisis, eros erat sodales nisl, ut ullamcorper eros sapien et lectus. In ut arcu vel nisl interdum lacinia.</p>
-
-			<p>Curabitur vestibulum nunc dolor, ac pharetra tellus scelerisque et. Cras blandit placerat venenatis. Pellentesque et libero dui. Vivamus id tellus sagittis, lobortis est sed, mattis dolor. Sed at venenatis neque, nec mattis nibh. Etiam faucibus arcu tellus, nec blandit diam molestie quis. Aenean consectetur quam nec diam vestibulum, et convallis purus viverra. Nullam vel congue ligula, in mattis erat. Nunc sollicitudin sodales aliquet. Ut laoreet lectus ac libero ornare bibendum. Integer quis porta mauris, quis molestie sem.</p>
-
-			<p>Fusce vitae risus erat. Morbi porttitor neque sit amet rhoncus aliquet. Praesent neque risus, ultricies a orci id, lacinia ultrices felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque suscipit leo non ornare dictum. Nulla molestie turpis eu elit suscipit euismod. Pellentesque faucibus, erat a ornare consectetur, lectus lacus interdum orci, vel ullamcorper augue enim vitae urna. Mauris mollis, nibh non egestas mollis, turpis mauris condimentum velit, vitae lacinia purus libero a est. Nulla dui eros, posuere gravida ultrices sit amet, varius id quam</p>
 		</div>
+		
+		<div class="fullframe main-subnav">
+	
+			<span class="subnav-close"><a style="display: none;" href="" class="icon-cancel-1" title="Close"></a></span>
+	
+			<!-- About -->
+			<section style="display: none;" id="subnav-about" class="subnav">
+				<h1 class="subnav-heading"><a href="#">About</a></h1>
+				<nav class="third">
+					<ul>
+						<li><a href="#">site at a glance</a></li>
+						<li><a href="#">Heritage</a></li>
+						<li><a href="#">Administration</a></li>
+						<li><a href="#">Location and Maps</a></li>
+						<li><a href="#">Visit Campus</a></li>
+					</ul>
+				</nav>
+				<aside class="third">
+					<p>site University is a Christian university committed to the
+ highest standards of academic excellence and Christian values, where 
+students are strengthened for lives of purpose, service, and leadership.</p>
+				</aside>
+				<aside class="third">
+					<p><img src="www%20One%20Column_files/about.jpg" alt="About" height="150" width="300"></p>
+				</aside>
+			</section>
+	
+			<!-- Academics -->
+			<section style="display: none;" id="subnav-academics" class="subnav">
+				<h1 class="subnav-heading"><a href="http://dev-www.site.edu/2014redesign/www/level1/">Academics</a></h1>
+				<nav class="third">
+					<ul>
+						<li><a href="#">Schools</a></li>
+						<li><a href="http://dev-www.site.edu/2014redesign/www/level1/level2/">Programs &amp; Majors</a></li>
+						<li><a href="#">Faculty</a></li>
+						<li><a href="#">Research</a></li>
+						<li><a href="#">Accreditation</a></li>
+					</ul>
+				</nav>
+				<aside class="third">
+					<p>site University, as an academic institution committed to 
+excellence in teaching and learning, develops the intellectual, 
+personal, and spiritual growth of each student.</p>
+				</aside>
+				<aside class="third">
+					<p><img style="height:150px;" src="www%20One%20Column_files/academics.jpg" alt="Academics" height="150" width="300"></p>
+				</aside>
+			</section>
+	
+			<!-- Admission & Aid -->
+			<section style="display: none;" id="subnav-admission" class="subnav">
+				<h1 class="subnav-heading"><a href="http://dev-www.site.edu/2014redesign/www/level1/">Admission &amp; Aid</a></h1>
+				<nav class="third">
+					<ul>
+						<li><a href="#">Undergraduate Admission</a></li>
+						<li><a href="#">Graduate Admission</a></li>
+						<li><a href="#">Financial Assistance</a></li>
+						<li><a href="#">International Students</a></li>
+						<li><a href="#">Student Life</a></li>
+					</ul>
+				</nav>
+				<aside class="third">
+					<p>The financial assistance programs at site make a private 
+education accessible to students from a wide range of economic 
+backgrounds.</p>
+				</aside>
+				<aside class="third">
+					<p><img src="www%20One%20Column_files/admission-aid.jpg" alt="Admission and Aid" height="150" width="300"></p>
+				</aside>
+			</section>
+	
+			<!-- Spiritual Life -->
+			<section style="display: none;" id="subnav-spirituallife" class="subnav">
+				<h1 class="subnav-heading"><a href="#">Spiritual Life</a></h1>
+				<nav class="third">
+					<ul>
+						<li><a href="#">Christian Tradition</a></li>
+						<li><a href="#">Church Relations</a></li>
+						<li><a href="#">Office of Chaplain</a></li>
+						<li><a href="#">Service</a></li>
+					</ul>
+				</nav>
+				<nav class="third">
+					<ul>
+						<li><a href="#">Christian Academic Cocurriculum</a></li>
+						<li><a href="#">Resources</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">Spiritual Life on Campus</a></li>
+					</ul>
+				</nav>
+<!--
+				<aside class="third">
+					<p>Christian values, firmly rooted in a Church of Christ heritage, are at the heart of each academic pursuit and spiritual journey at site.</p>
+				</aside>
+-->
+				<aside class="third">
+					<p><img src="www%20One%20Column_files/spiritual-life.jpg" alt="Spiritual Life" height="150" width="300"></p>
+				</aside>
+			</section>
+	
+		</div><!-- end main-subnav -->
+	</div><!-- end mainnav -->
+	
+
+	
+
+	<div class="container">
+
+
+
+	
+	<div id="leftSidebar" class="sidebarWidget" pushContainer="main">
+		<nav id="sidenav">
+		<ul class="admission">
+			<li><a class="open-nav"  href="/admission/explore/">Explore</a><span  class="child-toggle icon-up-dir"></span>
+				<ul>
+					<li><a class="open-nav current-page" href="/admission/explore/fast-facts/">Seaver Fast Facts</a><span class="child-toggle icon-up-dir"></span>
+						<ul>
+							<li><a href="/admission/explore/fast-facts/fast-facts-2.htm">Admission Statistics</a></li>
+							<li><a href="/admission/explore/fast-facts/fast-facts-3.htm">Student Statistics</a></li>
+							<li><a href="/admission/explore/fast-facts/fast-facts-4.htm">Academics</a></li>
+							<li><a href="/admission/explore/fast-facts/fast-facts-5.htm">Spiritual Life</a></li> 
+							<li><a href="/admission/explore/fast-facts/fast-facts-6.htm">International Programs</a></li>
+							<li><a href="/admission/explore/fast-facts/fast-facts-7.htm">Athletics</a></li>
+							<li><a href="/admission/explore/fast-facts/fast-facts-8.htm">Student Life</a></li>
+							<li><a href="/admission/explore/fast-facts/fast-facts-9.htm">Career Services and Alumni</a></li>
+						</ul>
+					</li><!-- Seaver Fast Facts -->
+				
+					<li><a href="/admission/explore/undergraduate/">Undergraduate Admission</a><span class="child-toggle icon-down-dir"></span> 
+						<ul >
+							<li><a href="/admission/explore/undergraduate/majors-minors.htm">Majors and Minors</a></li> 
+							<li><a href="/admission/apply/deadlines/">Admission Deadlines</a></li>
+							<li><a href="/admission/apply/undergraduate/">Admission Process</a></li>
+						</ul>	
+					</li><!-- Undergraduate Admission --> 
+				
+					<li><a href="/admission/explore/graduate/">Graduate Admission</a><span class="child-toggle icon-down-dir"></span> 
+						<ul > 
+							<li><a href="/graduateprograms/">Graduate Programs</a></li>
+							<li><a href="/graduatefellowships/">Graduate Fellowships</a></li>
+							<li><a href="/graduateprograms/housing/">Graduate Life at Campus</a></li>
+							<li><a href="/admission/apply/deadlines/">Admission Deadlines</a></li> 
+							<li><a href="/graduateprograms/admission/">Admission Process</a></li>
+							<li><a href="/graduateprograms/faq/">FAQ</a></li>
+							<li><a href="/graduateprograms/contact/">Contact Graduate Office</a></li>
+						</ul>
+					</li><!-- Graduate Admission --> 
+				
+					<li><a href="/admission/explore/financialassistance/">Financial Aid</a><span class="child-toggle icon-down-dir"></span>
+						<ul >
+							<li><a title="Link to external site" target="_blank" href="http://issuu.com/site/docs/site_seaver_college_financial?e=1187774/4786609">Financial Aid at a Glance <img src="/images/template/icons/iconexternal.gif" alt="Link to external site" border="0" height="12" width="12"></a></li>
+							<li><a href="/admission/explore/financialassistance/undergraduate/">Undergraduate Financial Aid</a><span class="icon-down-dir"></span>  
+							<ul >
+								<li><a href="/admission/explore/financialassistance/undergraduate/loans/">Loans</a><span class="icon-down-dir"></span>
+									<ul >
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/apply-online.htm">Lender Selection / Loan Process</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/loantypes.htm">Types of Loans</a></li> 
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/private-loan-info.htm">Private Loan Information</a></li> 
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/priv-loan-self-cert.htm">Private Loan Self-Certification</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/stafford-repayment.htm">Stafford Loan Sample Repayment Chart</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/plus-repayment.htm">PLUS Loan Sample Repayment Chart</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/perkins-repayment.htm">Perkins Loan Sample Repayment Chart</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/purl-repayment.htm">PURL Loan Sample Repayment Chart</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/loan-entrance.htm">Loan Entrance Counseling Information</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/loans/loan-exit.htm">Loan Exit Counseling Information</a></li>
+									</ul>
+								</li><!-- Loans --> 
+								<li><a href="/admission/explore/financialassistance/undergraduate/assistance/">Scholarships and Other Assistance</a><span class="icon-down-dir"></span>
+									<ul >
+										<li><a href="/admission/explore/financialassistance/undergraduate/assistance/federal-state.htm">Federal and State</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/assistance/university-private.htm">University and Private</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/assistance/outside-scholarships.htm">Outside Scholarships</a></li>
+									</ul>
+								</li><!-- Scholarships and Other Assistance -->
+								<li><a href="/admission/explore/financialassistance/undergraduate/eligibility/">Eligibility</a><span class="icon-down-dir"></span>
+									<ul > 
+										<li><a href="/admission/explore/financialassistance/undergraduate/eligibility/sap-policy.htm">Satisfactory Academic Progress</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/eligibility/terms-conditions.htm">Terms and Conditions</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/eligibility/code-of-conduct.htm">Code of Conduct</a></li>
+									</ul>		
+								</li><!-- Eligibility --> 
+
+								<li><a href="/admission/explore/financialassistance/undergraduate/costs/">Estimating Costs</a><span class="icon-down-dir"></span>
+									<ul >
+										<li><a href="/admission/explore/financialassistance/undergraduate/costs/budget-costs.htm">Budget/Cost</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/costs/summer-estimator/">Summer Estimator</a></li>
+										<li><a href="/admission/explore/financialassistance/undergraduate/costs/net-price-calculator/npcalc.htm" target="_blank">Net Price Calculator</a></li>
+									</ul>
+								</li><!-- Estimating Costs --> 
+							</ul>	
+						</li><!--Undergraduate Financial Aid-->
+					 
+						<li><a href="/admission/explore/financialassistance/graduate/">Graduate Financial Aid</a><span class="icon-down-dir"></span>  
+							<ul >
+								<li><a href="/admission/explore/financialassistance/graduate/loans/grad-info-1011.htm">Loans</a></li>
+								<li><a href="/graduatefellowships/">Graduate Fellowships</a></li>
+								<li><a href="/admission/explore/financialassistance/graduate/assistance/outside-scholarships.htm">Scholarships and Other Assistance</a></li>
+								<li><a href="/admission/explore/financialassistance/graduate/costs/">Estimating Costs</a></li>
+							</ul>		
+						</li><!--Graduate Financial Aid--> 
+					
+						<li><a href="/admission/explore/financialassistance/for-faculty-staff.htm">Faculty and Staff Benefits</a></li>
+					
+						<!-- <li><a href="/admission/explore/financialassistance/veteransaffairsbenefits.htm">Veterans Affairs Benefits</a></li> -->
+					
+						<li><a href="/admission/explore/financialassistance/parents.htm">Financial Aid for Parents</a></li>
+							<li><a href="/admission/explore/financialassistance/resources/">Financial Aid Resources</a><span class="icon-down-dir"></span>
+								<ul >
+									<li><a href="/admission/explore/financialassistance/resources/guide.htm">Financial Aid Guide</a></li>
+									<li><a href="/admission/explore/financialassistance/resources/accept-decline.htm">Accept/Decline Instructions</a></li>
+									<li><a href="/admission/explore/financialassistance/resources/specialcircumstances.htm">Appeals</a></li>
+									<li><a title="Link to external site" target="_blank" href="http://www.youtube.com/watch?v=55u_DxU1YmE">IRS Data Retrieval Tool Instructional Video <img src="/images/template/icons/iconexternal.gif" alt="Link to external site" border="0" height="12" width="12"></a></li>
+									<li><a href="/admission/explore/financialassistance/resources/letters/">Thank You Letter</a><span class="icon-down-dir"></span>
+										<ul >
+											<li><a href="/admission/explore/financialassistance/resources/letters/thankyoultrinstructions.htm">Instructions</a></li>
+											<li><a href="/admission/explore/financialassistance/resources/letters/guidelines.htm">Letter Guidelines</a></li>
+											<li><a href="/admission/explore/financialassistance/resources/letters/deadlines.htm">Deadlines</a></li>
+											<li><a href="/admission/explore/financialassistance/resources/letters/scholarshipsalutations.htm">Salutations</a></li>
+										</ul>
+									</li><!-- Thank You Letter --> 
+								</ul>
+							</li> <!-- Financial Aid Resources --> 
+					
+						<li><a href="/admission/explore/financialassistance/faq/">Financial Aid FAQ</a></li>
+					</ul>
+				</li><!-- Financial Aid --> 
+				
+				<li><a href="/admission/explore/requestinfo/">Request Information</a><span class="icon-down-dir"></span>
+					<ul >
+						<li><a href="/admission/explore/requestinfo/request-more.htm">Request Information Form</a></li>
+					</ul>	
+				</li><!-- Request Information --> 
+				<li><a title="Link to external site" target="_blank" href="http://issuu.com/site/docs/site_seaver_college_view_book?e=1187774/4542965">Digital View Book <img src="/images/template/icons/iconexternal.gif" alt="Link to external site" border="0" height="12" width="12"></a></li>	
+				<li><a href="/admission/explore/counselor/">Meet Your Counselor</a></li>
+				<li><a href="/admission/explore/voices/">Seaver Voices</a></li>
+				</ul>
+			</li><!-- Explore -->
+			
+			<li><a href="/admission/visit/">Visit</a><span class="icon-down-dir"></span>
+				<ul>
+					<li><a href="/admission/visit/events/rsvp/">Attend Regional Information Session</a></li>
+					<li><a href="/admission/visit/campustours/">Campus Visits</a><span class="icon-down-dir"></span>
+						<ul >
+							<li><a href="/admission/visit/campustours/small-groups.htm">Small Groups</a></li>
+							<li><a href="/admission/visit/campustours/large-groups.htm">Large Groups</a></li>
+							<li><a href="/admission/visit/campustours/classroom-visits/">Classroom Visits</a></li>
+						</ul>
+					</li><!-- Campus Tours -->
+					<li><a href="/admission/visit/events/resources/">Resources</a></li>
+				</ul>
+			</li><!-- Visit -->
+			
+			<li ><a href="/admission/apply/">Apply</a><span class="icon-down-dir"></span>
+				<ul>
+					<li><a href="/admission/apply/deadlines/">Application Deadlines</a></li>
+					
+					<li><a href="/admission/apply/undergraduate/">Undergraduate Application</a><span class="icon-down-dir"></span>
+						<ul >
+							<li><a href="/admission/apply/undergraduate/requirements/">Application Requirements</a></li>
+							<li><a href="/admission/apply/undergraduate/process.htm">Application Process</a></li>
+							<li><a title="Link to external site" target="_blank" href="https://www.commonapp.org/CommonApp/Default.aspx?ReturnUrl=%2fapplication%2fMyColleges.aspx%3fclientlist%3d410&amp;clientlist=410">Apply Now <img src="/images/template/icons/iconexternal.gif" alt="Link to external site" border="0" height="12" width="12"></a></li>
+							<li><a href="/admission/apply/undergraduate/faq/">FAQ</a></li>
+						</ul>
+					</li><!-- Undergraduate Application --> 
+					
+					<li><a href="/admission/apply/graduate/">Graduate Application</a><span class="icon-down-dir"></span>
+						<ul >
+							<li><a href="/graduateprograms/admission/">Application Requirements</a></li>
+							<li><a title="Link to external site" target="_blank" href="https://www.applyweb.com/apply/pepperg/requirements030.html">Application Process <img src="/images/template/icons/iconexternal.gif" alt="Link to external site" border="0" height="12" width="12"></a></li>
+							<li><a title="Link to external site" target="_blank" href="https://www.applyweb.com/apply/pepperg/index.html">Apply Now <img src="/images/template/icons/iconexternal.gif" alt="Link to external site" border="0" height="12" width="12"></a></li>
+						</ul>
+					</li><!-- Graduate Application -->
+					
+					<li><a href="/admission/apply/financialassistance/">Apply for Financial Aid</a><span class="icon-down-dir"></span>
+						<ul >
+						    <li><a href="/admission/apply/financialassistance/deadline/">Deadlines</a></li>
+							<li><a href="/admission/apply/financialassistance/appreq/">Application Requirements</a><span class="icon-down-dir"></span>  
+								<ul >
+									<li><a href="/admission/apply/financialassistance/appreq/2013-14/app-procedures-new.htm">Prospective</a></li>
+									<li><a href="/admission/apply/financialassistance/appreq/2013-14/app-procedures-ret.htm">Returning</a></li>
+									<li><a href="/admission/apply/financialassistance/appreq/2013-14/app-procedures-transfer.htm">Transfer</a></li>
+									<li><a href="/admission/apply/financialassistance/appreq/2013-14/app-procedures-international.htm">International</a></li>
+									<li><a href="/admission/apply/financialassistance/appreq/2013-14/app-procedures-graduate.htm">Graduate</a></li>
+								</ul>
+							</li> <!-- Application Requirements --> 
+							<li><a href="/admission/apply/financialassistance/fafsa.htm">Apply Now</a></li>
+							<li><a href="/admission/explore/financialassistance/resources/">Financial Aid Resources</a><span class="icon-down-dir"></span>
+								<ul >
+									<li><a href="/admission/explore/financialassistance/resources/guide.htm">Financial Aid Guide</a></li>
+									<li><a href="/admission/explore/financialassistance/resources/accept-decline.htm">Accept/Decline Instructions</a></li>
+									<li><a href="/admission/explore/financialassistance/resources/specialcircumstances.htm">Appeals</a></li>
+									<li><a title="Link to external site" target="_blank" href="http://www.youtube.com/watch?v=55u_DxU1YmE">IRS Data Retrieval Tool Instructional Video <img src="/images/template/icons/iconexternal.gif" alt="Link to external site" border="0" height="12" width="12"></a></li>
+									<li><a href="/admission/explore/financialassistance/resources/letters/">Thank You Letter</a><span class="icon-down-dir"></span>
+										<ul >
+											<li><a href="/admission/explore/financialassistance/resources/letters/thankyoultrinstructions.htm">Instructions</a></li>
+											<li><a href="/admission/explore/financialassistance/resources/letters/guidelines.htm">Letter Guidelines</a></li>
+											<li><a href="/admission/explore/financialassistance/resources/letters/deadlines.htm">Deadlines</a></li>
+											<li><a href="/admission/explore/financialassistance/resources/letters/scholarshipsalutations.htm">Salutations</a></li>
+										</ul>
+									</li><!-- Thank You Letter --> 
+								</ul>
+							</li><!-- Financial Aid Resources --> 
+						</ul>
+					</li><!-- Apply for Financial Aid -->  
+					 
+					<li><a href="/admission/apply/nondegree/">Non-degree</a><span class="icon-down-dir"></span>
+						<ul >
+						    <li><a href="/admission/apply/nondegree/requirements/">Application Requirements</a></li>
+						    <li><a href="/admission/apply/nondegree/process.htm">Application Process</a></li>
+							<li><a href="https://seaver.site.edu/admission/apply/nondegree/apply.htm">Apply Now</a></li>
+						</ul>
+					</li><!-- Non-degree --> 
+					
+					<li><a href="/admission/apply/reapply.htm">Reapply</a></li>
+					
+					<li><a href="/admission/apply/resources/">Application Resources</a></li>
+				</ul>
+			</li><!-- Apply -->
+			
+		</ul>
+		</nav>		
 	</div>
 
-	<div id="footer">Foooter</div>
-</body>
-</html>
+
+
+
+
+
+
+
+
+	<main>
+		<a href="#" sidebarWidget="leftSidebar">Trigger Left Sidebar</a>
+
+		<section class="full" style="margin-bottom:0;">
+			<h1 class="section-menu"><a class="icon-home" href="http://dev-www.site.edu/2014redesign/www/level1/">Admission &amp; Aid</a></h1>
+			<div class="breadcrumb" style="display:none;">Level One</div>
+		</section>
+
+
+		<section class="twothirds">
+			<p class="imgdefaultbdr"><img src="www%20One%20Column_files/admissionhead600X315.jpg" alt="sample"></p>
+		</section>
+
+
+	</main>
+	</div>
+	<!-- end container | main -->
+
+	
+	<!-- FOOTER -->
+	
+	<footer style="height:100px">
+
+	</footer>
+
+
+
+
+
+
+</body></html>
