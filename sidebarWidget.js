@@ -2,7 +2,7 @@
 
     var pluginName = "sidebarWidget",
         defaults = {
-            propertyName: "value"
+            wrapperClass: "sidebarWrapper"
         };
 
     // The actual plugin constructor
@@ -34,11 +34,11 @@
         	this.wrapper.css({left:0});
         },
         _generateWrapper: function(element){
-        	var wrapper = element.children(".sidebarWrapper:first");
+        	var wrapper = element.children("."+this.options.wrapperClass+":first");
 
             if(wrapper.length == 0){
-            	element.wrapInner("<div class='sidebarWrapper'></div>");
-            	wrapper = element.children(".sidebarWrapper:first");
+            	element.wrapInner("<div class='"+this.options.wrapperClass+"'></div>");
+            	wrapper = element.children("."+this.options.wrapperClass+":first");
             }
 
             return wrapper;
