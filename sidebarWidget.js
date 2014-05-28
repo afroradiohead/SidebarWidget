@@ -39,10 +39,14 @@
         openSidebar: function() {
         	this.element.addClass("open");
             this._setPositions();
+
+            this._bindCloseSidebarClickEvent();
         },
         closeSidebar: function() {
         	this.element.removeClass("open");
             this._setPositions();
+
+            this._unBindCloseSidebarClickEvent();
         },
         openListItem:function(li){
         	li.addClass('open');
@@ -109,6 +113,20 @@
 
         		return false;
         	});
+
+            $this.element.on('click', function(e){
+                e.stopPropagation();
+            });
+        },
+        _closeSidebarClickHandler : function(e){
+            if(this.element.hasClass("open"))
+                this.closeSidebar();
+        },
+        _bindCloseSidebarClickEvent : function(){ 
+            $(document).on("click", $.proxy(this._closeSidebarClickHandler, this));
+        },
+        _unBindCloseSidebarClickEvent : function(){
+            $(document).off("click", $.proxy(this._closeSidebarClickHandler, this));
         }
     };
 
