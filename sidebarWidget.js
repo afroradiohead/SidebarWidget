@@ -25,7 +25,9 @@
         	this._setPosition();
         	this._createEvents();
 
-
+        	this.element.find("ul ul").each(function(){
+        		$(this).prepend("<li> <a href='#'>Back</a></li>");
+        	});
         },
         resetPosition: function() {
         	this._setPosition();
