@@ -2,7 +2,8 @@
 
     var pluginName = "sidebarWidget",
         defaults = {
-            wrapperClass: "sidebarWrapper"
+            wrapperClass: "sidebarWrapper",
+            childToggleClass: "child-toggle"
         };
 
     // The actual plugin constructor
@@ -18,33 +19,68 @@
 
     Plugin.prototype = {
         init: function() {
-        	var $this = this;
-        	var id = this.element.attr("id");
-        	this.wrapper = this._generateWrapper(this.element);
-        	this.pushContainer = this._getPushContainer(this.element);
+        	this.wrapper = this._generateWrapper();
+        	this.pushContainer = this._getPushContainer();
 
-        	$(document).on("click", "[sidebarWidget='"+id+"']", function(){
-        		$this.openSidebar();
-        	});
+        	this._setPosition();
+        	this._createEvents();
 
-        	//move element to the left a little
+
+        },
+        resetPosition: function() {
+        	this._setPosition();
+        },
+        toggleSidebar: function() {
+        	if(this.element.hasClass("open"))
+        		this.closeSidebar();
+        	else
+        		this.openSidebar();
+        },
+        openSidebar: function() {
+        	this.element.addClass("open");
+        },
+        closeSidebar: function() {
+        	this.element.removeClass("open");
+        },
+        openListItem:function(li){
+        	li.addClass('open');
+        	li.parent("ul").addClass("child-open");
+        },
+        closeListItem:function(li){
+        	li.removeClass('open');
+        	li.parent("ul").removeClass("child-open");
+        },
+        _setPosition: function() {
         	this.element.css("left", this.pushContainer.offset().left - this.element.width());
         },
-        openSidebar:function(){
-        	this.wrapper.css({left:0});
-        },
-        _generateWrapper: function(element){
-        	var wrapper = element.children("."+this.options.wrapperClass+":first");
+        _generateWrapper: function() {
+        	var wrapper = this.element.children("."+this.options.wrapperClass+":first");
 
-            if(wrapper.length == 0){
-            	element.wrapInner("<div class='"+this.options.wrapperClass+"'></div>");
-            	wrapper = element.children("."+this.options.wrapperClass+":first");
+            if(wrapper.length == 0) {
+            	this.element.wrapInner("<div class='"+this.options.wrapperClass+"'></div>");
+            	wrapper = this.element.children("."+this.options.wrapperClass+":first");
             }
 
             return wrapper;
         },
-        _getPushContainer:function(element){
-        	return $(element.attr("pushContainer"));
+        _getPushContainer: function() {
+        	return $(this.element.attr("pushContainer"));
+        },
+        _createEvents : function() {
+        	var $this = this;
+        	var id = this.element.attr("id");
+
+        	$(document).on("click", "[sidebarWidget='"+id+"']", function() {
+        		$this.toggleSidebar();
+        	});
+
+        	$(window).on("resize", function() {
+        		$this.resetPosition();
+        	});
+
+        	this.element.on("click", "."+this.options.childToggleClass, function() { //when child-toggle is clicked
+        		$this.openListItem($(this).parents("li:first")); //open parent li
+        	});
         }
     };
 
