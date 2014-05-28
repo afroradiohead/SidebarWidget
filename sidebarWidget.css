@@ -1,14 +1,24 @@
+.sidebar-widget-parent {
+	-webkit-transition: margin-left .5s ease-out; /* For Safari 3.1 to 6.0 */
+	transition: margin-left .5s ease-out;
+}
+
+
 .sidebar-widget {
 	height:100%;
 	min-height:500px;
 	width:200px;
+	left:-200px;
 	position:absolute;
 	overflow:hidden;
 	pointer-events:none;
+	border:1px solid black;
+	visibility: hidden;
 }
 
 .sidebar-widget.open{
 	pointer-events:auto;
+	visibility: visible;
 }
 
 .sidebar-widget .sidebar-wrapper {
@@ -20,10 +30,11 @@
 	height: 100%;
 }
 
-.sidebar-widget .sidebar-wrapper nav{
+.sidebar-widget-parent.sidebar-widget-will-push .sidebar-widget .sidebar-wrapper{ 
+	left:-100%;
 }
 
-.sidebar-widget.open .sidebar-wrapper {
+.sidebar-widget-parent .sidebar-widget.open .sidebar-wrapper {
 	left: 0;
 }
 
@@ -38,7 +49,6 @@
 }
 
 .sidebar-widget .sidebar-wrapper li ul {
-	width:100%;
 	position: absolute;
 	top: 0;
 	left: 100%;
@@ -46,17 +56,14 @@
 	transition: left .5s ease-out;
 }
 
-.sidebar-widget .sidebar-wrapper li.open > ul {
+.sidebar-widget-parent.sidebar-widget-will-push .sidebar-widget .sidebar-wrapper li ul {
+	left: -100%;
+}
+
+.sidebar-widget-parent .sidebar-widget .sidebar-wrapper li.open > ul {
 	left: 0;
 }
 
-.sidebar-widget .sidebar-wrapper ul.child-open > li:not(.open){
-	display: none;
-}
-
-.sidebar-widget .sidebar-wrapper ul.child-open > li.open > *:not(ul){
-	display: none;
-}
 
 .sidebar-widget .sidebar-wrapper ul .child-toggle {
 	width:20px;
@@ -70,3 +77,4 @@
 	border-bottom:1px solid silver;
 	font-size:120%;
 }
+
