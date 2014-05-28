@@ -58,21 +58,22 @@
         	});
         },
         _setPosition: function() {
-        	var sidebarRenderedPosition = 0;
-        	this.sidebarLeftPosition = this.pushContainer.offset().left - this.element.width();
+        	var sidebarLeftPosition = this.pushContainer.offset().left - this.element.width();
+        	var renderedSidebarLeftPosition = sidebarLeftPosition;
 
-        	if(this.sidebarLeftPosition > 0)
-        		sidebarRenderedPosition = this.sidebarLeftPosition
-        	
-        	this.element.css("left", sidebarRenderedPosition);
+        	if(renderedSidebarLeftPosition < 0)
+        		renderedSidebarLeftPosition = 0;
 
-        	this._setPushContainer();
+        	this._setPushContainerPosition(sidebarLeftPosition);
+        	this.element.css("left", renderedSidebarLeftPosition);
         },
-        _setPushContainer: function() {
+        _setPushContainerPosition: function(sidebarLeftPosition) {
+        	var pushContainerPosition = 0;
 
-        	this.pushContainer.css("left", 100);
-
-        	this.pushContainer.css("position", "relative");
+        	// if(this.element.hasClass("open") && sidebarLeftPosition < 0)
+	        // 	this.pushContainer.css("padding-left", this.element.width());
+	        // else
+	        // 	this.pushContainer.css("padding-left", null);
         },
         _generateWrapper: function() {
         	var wrapper = this.element.children("."+this.options.wrapperClass+":first");
@@ -95,8 +96,13 @@
         		$this.toggleSidebar();
         	});
 
+        	var resizeTimeoutId;
         	$(window).on("resize", function() {
-        		$this.resetPosition();
+        		clearTimeout(resizeTimeoutId);
+        		resizeTimeoutId = setTimeout(function(){
+					$this.resetPosition();
+        		}, 1);
+        		
         	});
 
 			//when child-toggle is clicked

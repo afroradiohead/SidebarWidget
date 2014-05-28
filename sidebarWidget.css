@@ -2,7 +2,12 @@
 	height:100%;
 	width:200px;
 	position:absolute;
-	overflow:hidden
+	overflow:hidden;
+	pointer-events:none;
+}
+
+.sidebarWidget.open{
+	pointer-events:auto;
 }
 
 .sidebarWidget .sidebarWrapper {
@@ -39,7 +44,6 @@
 	-webkit-transition: left .5s ease-out; /* For Safari 3.1 to 6.0 */
 	transition: left .5s ease-out;
 }
-
 
 .sidebarWidget .sidebarWrapper li.open > ul {
 	left: 0;
