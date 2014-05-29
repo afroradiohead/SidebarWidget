@@ -19,12 +19,17 @@
     }
 
     Plugin.prototype = {
+        wrapper:null,
+        parentContainer:null,
+        width:0,
+        sidebarWillPush:false,
+        ignoreTransitionsTimeoutId:false,
         init: function() {
         	this.wrapper = this._generateWrapper();
             this.parentContainer = this.element.parent().addClass("sidebar-widget-parent");
             this.width = this.element.width();
 
-            this._checkIfSidebarWillFit();
+            this._setIfSidebarWillPush();
 
         	this._addBackLinks();
         	this._createEvents();
@@ -38,7 +43,7 @@
         openSidebar: function() {
         	this.element.addClass("open");
 
-            if(!this.sidebarWillFit)
+            if(this.sidebarWillPush)
                 this._setParentPosition();            
             
             this._bindCloseSidebarClickEvent();
@@ -52,11 +57,9 @@
         },
         openListItem:function(li){
         	li.addClass('open');
-        	li.parent("ul").addClass("child-open");
         },
         closeListItem:function(li){
         	li.removeClass('open');
-        	li.parent("ul").removeClass("child-open");
         },
         _addBackLinks: function() {
         	var $this = this;
@@ -67,9 +70,9 @@
         },
         _calculateParentPosition: function(){
             this._resetParentPosition();
-            this._checkIfSidebarWillFit();
+            this._setIfSidebarWillPush();
 
-            if(this.element.hasClass("open") && !this.sidebarWillFit)
+            if(this.element.hasClass("open") && this.sidebarWillPush)
                 this._setParentPosition();
         },
         _setParentPosition: function(){
@@ -78,15 +81,28 @@
         _resetParentPosition: function(){
             this.parentContainer.css({marginLeft: ""});
         },
-        _checkIfSidebarWillFit: function(){
+        _setIfSidebarWillPush: function(){
             var parentContainerOffsetLeft = this.parentContainer.offset().left;  
 
-            if(parentContainerOffsetLeft >= this.width)
-                this.sidebarWillFit = true;
+            if(parentContainerOffsetLeft < this.width)
+                this.sidebarWillPush = true;
             else
-                this.sidebarWillFit = false; 
+                this.sidebarWillPush = false; 
 
-            this.parentContainer.toggleClass("sidebar-widget-will-push", !this.sidebarWillFit);
+
+            this._temporarilyIgnoreTransitions();
+            this.parentContainer.toggleClass("sidebar-widget-will-push", this.sidebarWillPush);
+        },
+        _temporarilyIgnoreTransitions: function(){
+            var $this = this;
+
+            this.element.addClass("ignore-transitions");
+
+            clearTimeout(this.ignoreTransitionsTimeoutId);
+
+            this.ignoreTransitionsTimeoutId = setTimeout(function(){
+                $this.element.removeClass("ignore-transitions");
+            }, 20);            
         },
         _generateWrapper: function() {
         	var wrapper = this.element.children("."+this.options.wrapperClass+":first");
