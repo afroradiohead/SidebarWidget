@@ -4,10 +4,8 @@ SidebarWidget
 Sidebar Widget for current project
 
 
-##Code
+##Instructions to see preview
 
-``
-jQuery(document).ready(function($){
-	$("#left-sidebar").sidebarWidget();
-});
-``
+1. Download Zip
+2. Unzip
+3. Preview
