@@ -39,16 +39,15 @@
         	this.element.addClass("open");
 
             if(!this.sidebarWillFit)
-                this.parentContainer.css({marginLeft: this.width});               
+                this._setParentPosition();            
             
             this._bindCloseSidebarClickEvent();
         },
         closeSidebar: function() {
         	this.element.removeClass("open");
 
-            this.parentContainer.css({marginLeft: ""});
+            this._resetParentPosition();
 
-            
             this._unBindCloseSidebarClickEvent();
         },
         openListItem:function(li){
@@ -66,13 +65,28 @@
         		$(this).prepend("<li class='"+$this.options.backClass+"'> <a href='#'>Back</a></li>");
         	});
         },
+        _calculateParentPosition: function(){
+            this._resetParentPosition();
+            this._checkIfSidebarWillFit();
+
+            if(this.element.hasClass("open") && !this.sidebarWillFit)
+                this._setParentPosition();
+        },
+        _setParentPosition: function(){
+            this.parentContainer.css({marginLeft: this.width});
+        },
+        _resetParentPosition: function(){
+            this.parentContainer.css({marginLeft: ""});
+        },
         _checkIfSidebarWillFit: function(){
             var parentContainerOffsetLeft = this.parentContainer.offset().left;  
 
             if(parentContainerOffsetLeft >= this.width)
                 this.sidebarWillFit = true;
             else
-                this.sidebarWillFit = false;    
+                this.sidebarWillFit = false; 
+
+            this.parentContainer.toggleClass("sidebar-widget-will-push", !this.sidebarWillFit);
         },
         _generateWrapper: function() {
         	var wrapper = this.element.children("."+this.options.wrapperClass+":first");
@@ -96,7 +110,7 @@
         	$(window).on("resize", function() {
         		clearTimeout(resizeTimeoutId);
                 resizeTimeoutId = setTimeout(function(){
-                    $this._checkIfSidebarWillFit();
+                    $this._calculateParentPosition();
                 }, 20); 		
         	});
 

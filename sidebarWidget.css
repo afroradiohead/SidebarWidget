@@ -3,7 +3,6 @@
 	transition: left .5s ease-out;
 }
 
-
 .sidebar-widget {
 	height:100%;
 	min-height:500px;
@@ -12,13 +11,10 @@
 	position:absolute;
 	overflow:hidden;
 	pointer-events:none;
-	border:1px solid black;
-	visibility: hidden;
 }
 
 .sidebar-widget.open{
 	pointer-events:auto;
-	visibility: visible;
 }
 
 .sidebar-widget .sidebar-wrapper {
@@ -47,6 +43,7 @@
 .sidebar-widget .sidebar-wrapper ul a {
 	color:white;
 }
+
 
 .sidebar-widget .sidebar-wrapper li ul {
 	position: absolute;
