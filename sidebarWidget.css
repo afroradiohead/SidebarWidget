@@ -1,5 +1,5 @@
 /* ===Careful: Editing the section below may make widget not work as expected ===*/
-.sidebar-widget-parent .sidebar-widget {
+.sidebar-widget {
 	overflow:hidden;
 	pointer-events:none;
 	position:absolute;
