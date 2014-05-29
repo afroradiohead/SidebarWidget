@@ -61,9 +61,11 @@
         },
         openListItem:function(li){
         	li.addClass('open');
+            li.parent().addClass('child-open');
         },
         closeListItem:function(li){
         	li.removeClass('open');
+            li.parent().removeClass('child-open');
         },
         _addBackLinks: function() {
         	var $this = this;
