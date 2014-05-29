@@ -182,6 +182,3 @@
 
 })( jQuery, window, document );
 
-jQuery(document).ready(function($){
-	$("#left-sidebar").sidebarWidget();
-});
