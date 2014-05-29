@@ -9,3 +9,8 @@ Sidebar Widget for current project
 1. Download Zip
 2. Unzip
 3. Preview
+
+##How to use
+``
+$(element).sidebarWidget();
+``
