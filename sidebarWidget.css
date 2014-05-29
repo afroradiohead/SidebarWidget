@@ -1,18 +1,19 @@
-.sidebar-widget {
+/* ===Careful: Editing the section below may make widget not work as expected ===*/
+.sidebar-widget-parent .sidebar-widget {
+	overflow:hidden;
+	pointer-events:none;
+	position:absolute;
 	height:100%;
 	min-height:500px;
 	width:200px;
 	left:-200px;
-	position:absolute;
-	overflow:hidden;
-	pointer-events:none;
 }
 
-.sidebar-widget.open{
+.sidebar-widget-parent .sidebar-widget.open {
 	pointer-events:auto;
 }
 
-.sidebar-widget .sidebar-wrapper {
+.sidebar-widget-parent .sidebar-widget .sidebar-wrapper {
 	position: absolute; 
 	left: 100%;
 	-webkit-transition: left ease-out; /* For Safari 3.1 to 6.0 */
@@ -22,29 +23,24 @@
 	transition-duration: .5s;
 }
 
-.sidebar-widget.ignore-transitions .sidebar-wrapper{
-	transition-duration: 0s;
-}
-
 .sidebar-widget-parent.sidebar-widget-will-push .sidebar-widget .sidebar-wrapper{ 
 	left:-100%;
+}
+
+.sidebar-widget-parent .sidebar-widget.ignore-transitions .sidebar-wrapper{
+	transition-duration: 0s;
 }
 
 .sidebar-widget-parent .sidebar-widget.open .sidebar-wrapper {
 	left: 0;
 }
 
-.sidebar-widget .sidebar-wrapper ul {
+.sidebar-widget-parent .sidebar-widget .sidebar-wrapper ul {
 	list-style: none;
-	background-color:#EE7624;
 	width: 100%;
 } 
 
-.sidebar-widget .sidebar-wrapper ul a {
-	color:white;
-}
-
-.sidebar-widget .sidebar-wrapper li ul {
+.sidebar-widget-parent .sidebar-widget .sidebar-wrapper li ul {
 	position: absolute;
 	top: 0;
 	left: 100%;
@@ -53,7 +49,7 @@
 	transition-duration: .5s;
 }
 
-.sidebar-widget.ignore-transitions .sidebar-wrapper li ul{
+.sidebar-widget-parent .sidebar-widget.ignore-transitions .sidebar-wrapper li ul{
 	transition-duration: 0s;
 }
 
@@ -63,6 +59,16 @@
 
 .sidebar-widget-parent .sidebar-widget .sidebar-wrapper li.open > ul {
 	left: 0;
+}
+
+/* ===Safe Edits=== */
+
+.sidebar-widget .sidebar-wrapper ul {
+	background-color:#EE7624;
+} 
+
+.sidebar-widget .sidebar-wrapper ul a {
+	color:white;
 }
 
 .sidebar-widget .sidebar-wrapper ul .child-toggle {
@@ -77,4 +83,3 @@
 	border-bottom:1px solid silver;
 	font-size:120%;
 }
-

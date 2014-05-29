@@ -2,6 +2,9 @@
 
     var pluginName = "sidebarWidget",
         defaults = {
+            parentWidgetClass : "sidebar-widget-parent",
+            sidebarWillPushClass : "sidebar-widget-will-push",
+            widgetClass: "sidebar-widget",
             wrapperClass: "sidebar-wrapper",
             childToggleClass: "child-toggle",
             backClass:"back"
@@ -26,14 +29,15 @@
         ignoreTransitionsTimeoutId:false,
         init: function() {
         	this.wrapper = this._generateWrapper();
-            this.parentContainer = this.element.parent().addClass("sidebar-widget-parent");
+            this.parentContainer = this.element.parent();
             this.width = this.element.width();
 
+            this._setClasses();
             this._setIfSidebarWillPush();
-
         	this._addBackLinks();
         	this._createEvents();
         },
+
         toggleSidebar: function() {
         	if(this.element.hasClass("open"))
         		this.closeSidebar();
@@ -91,7 +95,7 @@
 
 
             this._temporarilyIgnoreTransitions();
-            this.parentContainer.toggleClass("sidebar-widget-will-push", this.sidebarWillPush);
+            this.parentContainer.toggleClass(this.options.sidebarWillPushClass, this.sidebarWillPush);
         },
         _temporarilyIgnoreTransitions: function(){
             var $this = this;
@@ -157,6 +161,10 @@
         },
         _unBindCloseSidebarClickEvent : function(){
             $(document).off("click", $.proxy(this._closeSidebarClickHandler, this));
+        },
+        _setClasses: function(){
+            this.element.addClass(this.options.widgetClass);
+            this.parentContainer.addClass(this.options.parentWidgetClass);
         }
     };
 
@@ -173,5 +181,5 @@
 })( jQuery, window, document );
 
 jQuery(document).ready(function($){
-	$(".sidebar-widget").sidebarWidget();
+	$("#left-sidebar").sidebarWidget();
 });
