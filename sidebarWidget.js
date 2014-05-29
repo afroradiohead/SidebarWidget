@@ -22,13 +22,12 @@
         init: function() {
         	this.wrapper = this._generateWrapper();
             this.parentContainer = this.element.parent().addClass("sidebar-widget-parent");
+            this.width = this.element.width();
 
-            this._setPositions();
+            this._checkIfSidebarWillFit();
+
         	this._addBackLinks();
         	this._createEvents();
-        },
-        resetPosition: function() {
-        	this._setPositions();
         },
         toggleSidebar: function() {
         	if(this.element.hasClass("open"))
@@ -39,19 +38,17 @@
         openSidebar: function() {
         	this.element.addClass("open");
 
-            var parentContainerOffsetLeft = this.parentContainer.offset().left;
-            this.parentContainer.css({ marginLeft: parentContainerOffsetLeft });
-
-            this._setPositions();
-
+            if(!this.sidebarWillFit)
+                this.parentContainer.css({marginLeft: this.width});               
+            
             this._bindCloseSidebarClickEvent();
         },
         closeSidebar: function() {
         	this.element.removeClass("open");
 
-            this.parentContainer.css({marginLeft: ""}); //set to where it needs to be, then remove
+            this.parentContainer.css({marginLeft: ""});
 
-            this._setPositions();
+            
             this._unBindCloseSidebarClickEvent();
         },
         openListItem:function(li){
@@ -69,17 +66,13 @@
         		$(this).prepend("<li class='"+$this.options.backClass+"'> <a href='#'>Back</a></li>");
         	});
         },
-        _setPositions: function() {
-            this.parentContainer.css("margin-left", "");
-            var thisWidth = this.element.width();
-            var parentContainerOffsetLeft = this.parentContainer.offset().left;
-            var willPush = parentContainerOffsetLeft < thisWidth;
-            var parentMarginLeft = ""; 
+        _checkIfSidebarWillFit: function(){
+            var parentContainerOffsetLeft = this.parentContainer.offset().left;  
 
-            this.parentContainer.toggleClass("sidebar-widget-will-push", willPush);
-
-            if(this.element.hasClass("open") && willPush)
-                this.parentContainer.css("margin-left", thisWidth);
+            if(parentContainerOffsetLeft >= this.width)
+                this.sidebarWillFit = true;
+            else
+                this.sidebarWillFit = false;    
         },
         _generateWrapper: function() {
         	var wrapper = this.element.children("."+this.options.wrapperClass+":first");
@@ -103,8 +96,8 @@
         	$(window).on("resize", function() {
         		clearTimeout(resizeTimeoutId);
                 resizeTimeoutId = setTimeout(function(){
-                    $this.resetPosition();
-                }, 20)     		
+                    $this._checkIfSidebarWillFit();
+                }, 20); 		
         	});
 
 			//when child-toggle is clicked

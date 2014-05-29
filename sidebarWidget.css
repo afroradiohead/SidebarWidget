@@ -1,6 +1,6 @@
 .sidebar-widget-parent {
-	-webkit-transition: margin-left .5s ease-out; /* For Safari 3.1 to 6.0 */
-	transition: margin-left .5s ease-out;
+	-webkit-transition: left .5s ease-out; /* For Safari 3.1 to 6.0 */
+	transition: left .5s ease-out;
 }
 
 
@@ -63,7 +63,6 @@
 .sidebar-widget-parent .sidebar-widget .sidebar-wrapper li.open > ul {
 	left: 0;
 }
-
 
 .sidebar-widget .sidebar-wrapper ul .child-toggle {
 	width:20px;
